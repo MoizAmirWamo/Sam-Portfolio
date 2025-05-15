@@ -18,7 +18,7 @@ export default function Projects() {
       techStack: ['React.js', 'Django', 'OpenAI', 'PostgreSQL', 'GCP'],
       // Note: Videos need to be hosted externally (e.g., Cloudinary, AWS S3) for production
       // Local path used for development only
-      demoVideo: '/videos/GovProposalPro_App_demo.mp4'
+      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/GovProposalPro_App_demo-YsCthhgZJSAvAbd5kEAsc9ZQ2ZyY0Y.mp4'
     },
     {
       id: 2,
@@ -27,7 +27,7 @@ export default function Projects() {
       category: 'ai',
       image: '/projects/burstmodeai.jpg',
       techStack: ['Next.js', 'Gemini', 'Firebase', 'GCP', 'Stripe'],
-      demoVideo: '/videos/Burst-Mode-AI.MP4'
+      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Burst-Mode-AI-b6VyznwwurW2Vi4WdCXxOTCaA6fSoQ.MP4'
     },
     {
       id: 3,
@@ -36,7 +36,7 @@ export default function Projects() {
       category: 'data',
       image: '/projects/chronos.jpg',
       techStack: ['Streamlit', 'Python', 'Chronos-T5', 'Random Forest', 'ARIMA'],
-      demoVideo: '/videos/Time-Series-App.mov'
+      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Time-Series-App-n5omDc4FqWHGPVg9zKkkjkjDg7lQaL.mov'
     },
     {
       id: 4,
@@ -45,7 +45,7 @@ export default function Projects() {
       category: 'nlp',
       image: '/projects/relaxerai.jpg',
       techStack: ['Next.js', 'FastAPI', 'LangChain', 'OpenAI', 'ChromaDB'],
-      demoVideo: '/videos/RelaxerAI.mov'
+      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/RelaxerAI-Uy287Bhv5MvXWE2ES3tWu0wzksGvvb.mov'
     },
     {
       id: 5,
@@ -54,7 +54,7 @@ export default function Projects() {
       category: 'nlp',
       image: '/projects/langchain-rag.jpg',
       techStack: ['LangChain', 'Llama3', 'DeepSeek', 'FAISS', 'FastEmbed'],
-      demoVideo: '/videos/Langchain_RAG.mov'
+      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Langchain_RAG-XfFu1JZNNBPvymatWeKpTJhTBUIMGG.mov'
     },
     {
       id: 6,
@@ -63,7 +63,7 @@ export default function Projects() {
       category: 'data',
       image: '/projects/movie-advisor.jpg',
       techStack: ['Streamlit', 'Python', 'TF-IDF', 'Cosine Similarity', 'TMDb API'],
-      demoVideo: '/videos/Movie-Rcommender.mov'
+      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Movie-Rcommender-qBk4gJMBykvfpLYo2gSKb2RyEA5MXt.mov'
     },
   ];
 

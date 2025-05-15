@@ -16,6 +16,8 @@ export default function Projects() {
       category: 'ai',
       image: '/projects/govproposalpro.jpg',
       techStack: ['React.js', 'Django', 'OpenAI', 'PostgreSQL', 'GCP'],
+      // Note: Videos need to be hosted externally (e.g., Cloudinary, AWS S3) for production
+      // Local path used for development only
       demoVideo: '/videos/GovProposalPro_App_demo.mp4'
     },
     {

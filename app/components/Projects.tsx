@@ -1,12 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaPlayCircle } from 'react-icons/fa';
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('all');
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [videoError, setVideoError] = useState<string | null>(null);
   
   const projects = [
     {
@@ -16,7 +18,7 @@ export default function Projects() {
       category: 'ai',
       image: '/projects/govproposalpro.jpg',
       techStack: ['React.js', 'Django', 'OpenAI', 'PostgreSQL', 'GCP'],
-      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/GovProposalPro_App_demo-YsCthhgZJSAvAbd5kEAsc9ZQ2ZyY0Y.mp4'
+      demoVideo: 'https://portfolio-hassan-blob.public.blob.vercel-storage.com/GovProposalPro_App_demo-YsCthhgZJSAvAbd5kEAsc9ZQ2ZyY0Y.mp4'
     },
     {
       id: 2,
@@ -25,7 +27,7 @@ export default function Projects() {
       category: 'ai',
       image: '/projects/burstmodeai.jpg',
       techStack: ['Next.js', 'Gemini', 'Firebase', 'GCP', 'Stripe'],
-      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Burst-Mode-AI-b6VyznwwurW2Vi4WdCXxOTCaA6fSoQ.MP4'
+      demoVideo: 'https://portfolio-hassan-blob.public.blob.vercel-storage.com/Burst-Mode-AI-b6VyznwwurW2Vi4WdCXxOTCaA6fSoQ.MP4'
     },
     {
       id: 3,
@@ -34,7 +36,7 @@ export default function Projects() {
       category: 'data',
       image: '/projects/chronos.jpg',
       techStack: ['Streamlit', 'Python', 'Chronos-T5', 'Random Forest', 'ARIMA'],
-      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Time-Series-App-n5omDc4FqWHGPVg9zKkkjkjDg7lQaL.mov'
+      demoVideo: 'https://portfolio-hassan-blob.public.blob.vercel-storage.com/Time-Series-App-n5omDc4FqWHGPVg9zKkkjkjDg7lQaL.mov'
     },
     {
       id: 4,
@@ -43,7 +45,7 @@ export default function Projects() {
       category: 'nlp',
       image: '/projects/relaxerai.jpg',
       techStack: ['Next.js', 'FastAPI', 'LangChain', 'OpenAI', 'ChromaDB'],
-      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/RelaxerAI-Uy287Bhv5MvXWE2ES3tWu0wzksGvvb.mov'
+      demoVideo: 'https://portfolio-hassan-blob.public.blob.vercel-storage.com/RelaxerAI-Uy287Bhv5MvXWE2ES3tWu0wzksGvvb.mov'
     },
     {
       id: 5,
@@ -52,7 +54,7 @@ export default function Projects() {
       category: 'nlp',
       image: '/projects/langchain-rag.jpg',
       techStack: ['LangChain', 'Llama3', 'DeepSeek', 'FAISS', 'FastEmbed'],
-      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Langchain_RAG-XfFu1JZNNBPvymatWeKpTJhTBUIMGG.mov'
+      demoVideo: 'https://portfolio-hassan-blob.public.blob.vercel-storage.com/Langchain_RAG-XfFu1JZNNBPvymatWeKpTJhTBUIMGG.mov'
     },
     {
       id: 6,
@@ -61,31 +63,39 @@ export default function Projects() {
       category: 'data',
       image: '/projects/movie-advisor.jpg',
       techStack: ['Streamlit', 'Python', 'TF-IDF', 'Cosine Similarity', 'TMDb API'],
-      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Movie-Rcommender-qBk4gJMBykvfpLYo2gSKb2RyEA5MXt.mov'
+      demoVideo: 'https://portfolio-hassan-blob.public.blob.vercel-storage.com/Movie-Rcommender-qBk4gJMBykvfpLYo2gSKb2RyEA5MXt.mov'
     },
   ];
 
   // Close modal function
   const closeModal = () => {
     setActiveVideo(null);
+    setVideoError(null);
     document.body.style.overflow = 'auto';
   };
 
   // Open modal function
   const openModal = (videoSrc: string) => {
+    setIsLoading(true);
+    setVideoError(null);
     setActiveVideo(videoSrc);
     document.body.style.overflow = 'hidden';
   };
 
-  // Helper function to determine video type
+  // Handle video load event
+  const handleVideoLoad = () => {
+    setIsLoading(false);
+  };
+
+  // Get video type based on file extension
   const getVideoType = (url: string) => {
     if (url.toLowerCase().endsWith('.mp4')) return 'video/mp4';
     if (url.toLowerCase().endsWith('.mov') || url.toLowerCase().includes('.mov?')) return 'video/quicktime';
     if (url.toLowerCase().endsWith('.webm')) return 'video/webm';
-    return 'video/mp4'; // default fallback
+    return 'video/mp4'; // Default
   };
 
-  // Helper function to get video title
+  // Get video title based on URL
   const getVideoTitle = (url: string) => {
     if (url.includes('GovProposalPro')) return 'GovProposalPro Demo';
     if (url.includes('Burst-Mode-AI')) return 'BurstModeAI Demo';
@@ -93,7 +103,7 @@ export default function Projects() {
     if (url.includes('RelaxerAI')) return 'RelaxerAI Demo';
     if (url.includes('Langchain_RAG')) return 'LangChain-Based RAG Demo';
     if (url.includes('Movie-Rcommender')) return 'Movie Advisor Demo';
-    return 'Project Demo';
+    return 'Demo Video';
   };
 
   const filters = [
@@ -226,21 +236,44 @@ export default function Projects() {
               </button>
             </div>
             <div className="aspect-video bg-black relative">
-              <video 
-                className="w-full h-full object-contain"
-                controls 
-                playsInline
-                autoPlay
-                controlsList="nodownload"
-                onError={(e) => {
-                  console.error('Video loading error:', e);
-                  alert('Sorry, there was an error loading the video. Please try again later.');
-                  closeModal();
-                }}
-              >
-                <source src={activeVideo} type={getVideoType(activeVideo)} />
-                Your browser does not support the video tag.
-              </video>
+              {isLoading && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+                </div>
+              )}
+              
+              {videoError ? (
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-red-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                  <p className="text-center px-4">{videoError}</p>
+                  <button 
+                    onClick={closeModal}
+                    className="mt-4 bg-white/20 px-4 py-2 rounded hover:bg-white/30 transition-colors"
+                  >
+                    Close
+                  </button>
+                </div>
+              ) : (
+                <video 
+                  key={activeVideo}
+                  controls 
+                  playsInline
+                  autoPlay
+                  controlsList="nodownload"
+                  className="w-full h-full object-contain"
+                  onLoadedData={handleVideoLoad}
+                  onError={(e) => {
+                    console.error('Video loading error:', e);
+                    setIsLoading(false);
+                    setVideoError('Sorry, there was an error loading the video. Please try again later.');
+                  }}
+                >
+                  <source src={activeVideo} type={getVideoType(activeVideo)} />
+                  Your browser does not support the video tag.
+                </video>
+              )}
             </div>
           </div>
         </div>

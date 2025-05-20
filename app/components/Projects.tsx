@@ -10,6 +10,24 @@ export default function Projects() {
   const [isLoading, setIsLoading] = useState(false);
   const [videoError, setVideoError] = useState<string | null>(null);
   
+  // For debugging
+  useEffect(() => {
+    if (activeVideo) {
+      // Check if the video URL is valid
+      fetch(activeVideo, { method: 'HEAD' })
+        .then(response => {
+          if (!response.ok) {
+            console.error(`Error fetching video: ${response.status} ${response.statusText}`);
+            setVideoError(`Error accessing video (Status: ${response.status}). Please try again later.`);
+          }
+        })
+        .catch(error => {
+          console.error('Video fetch error:', error);
+          setVideoError(`Network error: ${error.message}. This may be due to CORS restrictions.`);
+        });
+    }
+  }, [activeVideo]);
+  
   const projects = [
     {
       id: 1,
@@ -18,7 +36,7 @@ export default function Projects() {
       category: 'ai',
       image: '/projects/govproposalpro.jpg',
       techStack: ['React.js', 'Django', 'OpenAI', 'PostgreSQL', 'GCP'],
-      demoVideo: 'https://portfolio-hassan-blob.public.blob.vercel-storage.com/GovProposalPro_App_demo-YsCthhgZJSAvAbd5kEAsc9ZQ2ZyY0Y.mp4'
+      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/GovProposalPro_App_demo-YsCthhgZJSAvAbd5kEAsc9ZQ2ZyY0Y.mp4'
     },
     {
       id: 2,
@@ -27,7 +45,7 @@ export default function Projects() {
       category: 'ai',
       image: '/projects/burstmodeai.jpg',
       techStack: ['Next.js', 'Gemini', 'Firebase', 'GCP', 'Stripe'],
-      demoVideo: 'https://portfolio-hassan-blob.public.blob.vercel-storage.com/Burst-Mode-AI-b6VyznwwurW2Vi4WdCXxOTCaA6fSoQ.MP4'
+      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Burst-Mode-AI-b6VyznwwurW2Vi4WdCXxOTCaA6fSoQ.MP4'
     },
     {
       id: 3,
@@ -36,7 +54,7 @@ export default function Projects() {
       category: 'data',
       image: '/projects/chronos.jpg',
       techStack: ['Streamlit', 'Python', 'Chronos-T5', 'Random Forest', 'ARIMA'],
-      demoVideo: 'https://portfolio-hassan-blob.public.blob.vercel-storage.com/Time-Series-App-n5omDc4FqWHGPVg9zKkkjkjDg7lQaL.mov'
+      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Time-Series-App-n5omDc4FqWHGPVg9zKkkjkjDg7lQaL.mov'
     },
     {
       id: 4,
@@ -45,7 +63,7 @@ export default function Projects() {
       category: 'nlp',
       image: '/projects/relaxerai.jpg',
       techStack: ['Next.js', 'FastAPI', 'LangChain', 'OpenAI', 'ChromaDB'],
-      demoVideo: 'https://portfolio-hassan-blob.public.blob.vercel-storage.com/RelaxerAI-Uy287Bhv5MvXWE2ES3tWu0wzksGvvb.mov'
+      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/RelaxerAI-Uy287Bhv5MvXWE2ES3tWu0wzksGvvb.mov'
     },
     {
       id: 5,
@@ -54,7 +72,7 @@ export default function Projects() {
       category: 'nlp',
       image: '/projects/langchain-rag.jpg',
       techStack: ['LangChain', 'Llama3', 'DeepSeek', 'FAISS', 'FastEmbed'],
-      demoVideo: 'https://portfolio-hassan-blob.public.blob.vercel-storage.com/Langchain_RAG-XfFu1JZNNBPvymatWeKpTJhTBUIMGG.mov'
+      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Langchain_RAG-XfFu1JZNNBPvymatWeKpTJhTBUIMGG.mov'
     },
     {
       id: 6,
@@ -63,7 +81,7 @@ export default function Projects() {
       category: 'data',
       image: '/projects/movie-advisor.jpg',
       techStack: ['Streamlit', 'Python', 'TF-IDF', 'Cosine Similarity', 'TMDb API'],
-      demoVideo: 'https://portfolio-hassan-blob.public.blob.vercel-storage.com/Movie-Rcommender-qBk4gJMBykvfpLYo2gSKb2RyEA5MXt.mov'
+      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Movie-Rcommender-qBk4gJMBykvfpLYo2gSKb2RyEA5MXt.mov'
     },
   ];
 
@@ -80,10 +98,14 @@ export default function Projects() {
     setVideoError(null);
     setActiveVideo(videoSrc);
     document.body.style.overflow = 'hidden';
+    
+    // Log video URL for debugging
+    console.log('Opening video URL:', videoSrc);
   };
 
   // Handle video load event
   const handleVideoLoad = () => {
+    console.log('Video loaded successfully');
     setIsLoading(false);
   };
 
@@ -261,16 +283,18 @@ export default function Projects() {
                   controls 
                   playsInline
                   autoPlay
+                  crossOrigin="anonymous"
                   controlsList="nodownload"
                   className="w-full h-full object-contain"
                   onLoadedData={handleVideoLoad}
                   onError={(e) => {
                     console.error('Video loading error:', e);
                     setIsLoading(false);
-                    setVideoError('Sorry, there was an error loading the video. Please try again later.');
+                    setVideoError(`Sorry, there was an error loading the video (${activeVideo}). Please try again later.`);
                   }}
                 >
-                  <source src={activeVideo} type={getVideoType(activeVideo)} />
+                  <source src={activeVideo} type="video/mp4" />
+                  <source src={activeVideo} type="video/quicktime" />
                   Your browser does not support the video tag.
                 </video>
               )}

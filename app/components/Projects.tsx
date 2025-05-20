@@ -36,7 +36,7 @@ export default function Projects() {
       category: 'ai',
       image: '/projects/govproposalpro.jpg',
       techStack: ['React.js', 'Django', 'OpenAI', 'PostgreSQL', 'GCP'],
-      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/GovProposalPro_App_demo-YsCthhgZJSAvAbd5kEAsc9ZQ2ZyY0Y.mp4'
+      demoVideo: 'https://sam-portfolio-new.public.blob.vercel-storage.com/videos/GovProposalPro_App_demo-BwZAy1Lgr6P8Dk1lsssS....mp4'
     },
     {
       id: 2,
@@ -45,7 +45,7 @@ export default function Projects() {
       category: 'ai',
       image: '/projects/burstmodeai.jpg',
       techStack: ['Next.js', 'Gemini', 'Firebase', 'GCP', 'Stripe'],
-      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Burst-Mode-AI-b6VyznwwurW2Vi4WdCXxOTCaA6fSoQ.mp4'
+      demoVideo: 'https://sam-portfolio-new.public.blob.vercel-storage.com/videos/Burst-Mode-AI-eT3bBI76am9QreFFFhKnJKf5TWxoG....mp4'
     },
     {
       id: 3,
@@ -54,7 +54,7 @@ export default function Projects() {
       category: 'data',
       image: '/projects/chronos.jpg',
       techStack: ['Streamlit', 'Python', 'Chronos-T5', 'Random Forest', 'ARIMA'],
-      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Time-Series-App-n5omDc4FqWHGPVg9zKkkjkjDg7lQaL.mp4'
+      demoVideo: 'https://sam-portfolio-new.public.blob.vercel-storage.com/videos/Time-Series-App-XkNdFEbYOWJ7GBkLE9xRA5FyVOJP1g.mov'
     },
     {
       id: 4,
@@ -63,7 +63,7 @@ export default function Projects() {
       category: 'nlp',
       image: '/projects/relaxerai.jpg',
       techStack: ['Next.js', 'FastAPI', 'LangChain', 'OpenAI', 'ChromaDB'],
-      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/RelaxerAI-Uy287Bhv5MvXWE2ES3tWu0wzksGvvb.mp4'
+      demoVideo: 'https://sam-portfolio-new.public.blob.vercel-storage.com/videos/RelaxerAI-jHLLan0t5MYWdPrNO7NHNsXDEvFgkj.mov'
     },
     {
       id: 5,
@@ -72,7 +72,7 @@ export default function Projects() {
       category: 'nlp',
       image: '/projects/langchain-rag.jpg',
       techStack: ['LangChain', 'Llama3', 'DeepSeek', 'FAISS', 'FastEmbed'],
-      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Langchain_RAG-XfFu1JZNNBPvymatWeKpTJhTBUIMGG.mp4'
+      demoVideo: 'https://sam-portfolio-new.public.blob.vercel-storage.com/videos/Langchain_RAG-NzHK2zivXnnFT82fcheyMulBhig1zz.mov'
     },
     {
       id: 6,
@@ -81,9 +81,10 @@ export default function Projects() {
       category: 'data',
       image: '/projects/movie-advisor.jpg',
       techStack: ['Streamlit', 'Python', 'TF-IDF', 'Cosine Similarity', 'TMDb API'],
-      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Movie-Rcommender-qBk4gJMBykvfpLYo2gSKb2RyEA5MXt.mp4'
-    },
+      demoVideo: 'https://sam-portfolio-new.public.blob.vercel-storage.com/videos/Movie-Rcommender-YeUWcYhvzrTJmgO1aDvsISmLFjZkUu.mov'
+    }
   ];
+  
 
   // Close modal function
   const closeModal = () => {

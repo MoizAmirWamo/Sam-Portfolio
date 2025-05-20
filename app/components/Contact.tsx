@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaLinkedin } from 'react-icons/fa';
+import { FaEnvelope, FaLinkedin, FaGithub, FaMapMarkerAlt } from 'react-icons/fa';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -43,16 +43,32 @@ export default function Contact() {
     { 
       name: 'Email', 
       icon: <FaEnvelope className="text-2xl" />, 
-      link: 'mailto:devhassanmalik@gmail.com',
+      link: 'mailto:sammy.abs101@gmail.com',
       color: 'bg-red-500/20 text-red-400'
     },
     { 
       name: 'LinkedIn', 
       icon: <FaLinkedin className="text-2xl" />, 
-      link: 'https://www.linkedin.com/in/hassanmalik17/',
+      link: 'https://www.linkedin.com/in/sam-abbot21/',
       color: 'bg-blue-500/20 text-blue-400'
+    },
+    { 
+      name: 'GitHub', 
+      icon: <FaGithub className="text-2xl" />, 
+      link: 'https://github.com/devsam31',
+      color: 'bg-purple-500/20 text-purple-400'
+    },
+    { 
+      name: 'Location', 
+      icon: <FaMapMarkerAlt className="text-2xl" />, 
+      link: '#',
+      color: 'bg-green-500/20 text-green-400',
+      displayInContact: true,
+      hideInConnect: true
     }
   ];
+
+  const connectLinks = socialLinks.filter(link => !link.hideInConnect);
 
   return (
     <section id="contact" className="py-20 relative">
@@ -66,8 +82,8 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-2">
-            <span className="text-gradient">Contact Me</span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-2 text-white">
+            Contact Me
           </h2>
           <div className="w-16 h-1 bg-gradient-primary mx-auto rounded-full mb-6"></div>
           <p className="text-gray-300 max-w-3xl mx-auto">
@@ -200,50 +216,40 @@ export default function Contact() {
               <h3 className="text-2xl font-bold mb-6 text-white">Contact Information</h3>
               
               <div className="space-y-4">
-                <div className="flex items-start">
-                  <div className="bg-primary/20 rounded-full p-3 mr-4">
-                    <FaEnvelope className="text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-medium">Email</h4>
-                    <a href="mailto:devhassanmalik@gmail.com" className="text-gray-300 hover:text-primary transition-colors">
-                      devhassanmalik@gmail.com
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="bg-primary/20 rounded-full p-3 mr-4">
-                    <FaLinkedin className="text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-medium">LinkedIn</h4>
-                    <a href="https://www.linkedin.com/in/hassanmalik17/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-primary transition-colors">
-                      linkedin.com/in/hassanmalik17
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="bg-primary/20 rounded-full p-3 mr-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-medium">Location</h4>
-                    <p className="text-gray-300">Remote | Worldwide</p>
-                  </div>
-                </div>
+                {socialLinks.filter(link => link.displayInContact !== false).map((link, index) => (
+                  <motion.div 
+                    key={link.name}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: 0.4 + (index * 0.1) }}
+                    className="flex items-center"
+                  >
+                    <div className={`w-12 h-12 rounded-full ${link.color} flex items-center justify-center mr-4`}>
+                      {link.icon}
+                    </div>
+                    <div>
+                      <div className="text-sm text-gray-400">{link.name}</div>
+                      {link.name === 'Location' ? (
+                        <div className="text-white">Monmouth, NJ 07726, United States</div>
+                      ) : (
+                        <a href={link.link} target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary">
+                          {link.name === 'Email' ? 'sammy.abs101@gmail.com' : 
+                           link.name === 'LinkedIn' ? 'linkedin.com/in/sam-abbot21' : 
+                           link.name === 'GitHub' ? 'github.com/devsam31' : link.link}
+                        </a>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </div>
             
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 md:p-8">
               <h3 className="text-2xl font-bold mb-6 text-white">Connect With Me</h3>
               
-              <div className="grid grid-cols-2 gap-4">
-                {socialLinks.map((social, index) => (
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {connectLinks.map((social, index) => (
                   <a 
                     key={index}
                     href={social.link}

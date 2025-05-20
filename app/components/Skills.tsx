@@ -1,77 +1,45 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaPython, FaBrain, FaRobot, FaDatabase, FaCloud, FaDove } from 'react-icons/fa';
-import { 
-  SiTensorflow, 
-  SiPytorch, 
-  SiJupyter, 
-  SiScikitlearn, 
-  SiKeras, 
-  SiHuggingface, 
-  SiOpencv, 
-  SiPandas, 
-  SiNumpy, 
-  SiKaggle,
-  SiOpenai
-} from 'react-icons/si';
-import { GiHummingbird } from 'react-icons/gi';
-import { BiNetworkChart } from 'react-icons/bi';
+import { FaPython, FaDatabase, FaAws, FaJava, FaJs, FaDocker } from 'react-icons/fa';
+import { SiTensorflow, SiPytorch, SiOpenai, SiCplusplus, SiR, SiKeras, SiMlflow, SiStreamlit, SiFlask, SiFastapi, SiLangchain, SiHuggingface } from 'react-icons/si';
 
 export default function Skills() {
+  // Define skill categories with corresponding skills
   const skillCategories = [
     {
-      title: 'Machine Learning',
+      name: "Languages",
       skills: [
-        { name: 'Scikit-Learn', icon: <SiScikitlearn className="text-3xl" />, level: 95 },
-        { name: 'TensorFlow', icon: <SiTensorflow className="text-3xl" />, level: 90 },
-        { name: 'PyTorch', icon: <SiPytorch className="text-3xl" />, level: 90 },
-        { name: 'Pandas/NumPy', icon: <SiPandas className="text-3xl" />, level: 95 },
+        { name: "Python", icon: <FaPython className="text-2xl" />, level: 95 },
+        { name: "R", icon: <SiR className="text-2xl" />, level: 85 },
+        { name: "Java", icon: <FaJava className="text-2xl" />, level: 80 },
+        { name: "SQL", icon: <FaDatabase className="text-2xl" />, level: 90 },
+        { name: "C++", icon: <SiCplusplus className="text-2xl" />, level: 75 },
+        { name: "JavaScript", icon: <FaJs className="text-2xl" />, level: 70 },
       ]
     },
     {
-      title: 'Deep Learning',
+      name: "Frameworks & Tools",
       skills: [
-        { name: 'Neural Networks', icon: <BiNetworkChart className="text-3xl" />, level: 90 },
-        { name: 'Computer Vision', icon: <SiOpencv className="text-3xl" />, level: 85 },
-        { name: 'NLP', icon: <FaBrain className="text-3xl" />, level: 90 },
-        { name: 'Keras', icon: <SiKeras className="text-3xl" />, level: 85 },
+        { name: "PyTorch", icon: <SiPytorch className="text-2xl" />, level: 90 },
+        { name: "TensorFlow", icon: <SiTensorflow className="text-2xl" />, level: 85 },
+        { name: "LangChain", icon: <SiLangchain className="text-2xl" />, level: 90 },
+        { name: "FastAPI", icon: <SiFastapi className="text-2xl" />, level: 88 },
+        { name: "Flask", icon: <SiFlask className="text-2xl" />, level: 85 },
+        { name: "Streamlit", icon: <SiStreamlit className="text-2xl" />, level: 92 },
       ]
     },
     {
-      title: 'Generative AI',
+      name: "Libraries & Services",
       skills: [
-        { name: 'LLMs', icon: <SiOpenai className="text-3xl" />, level: 90 },
-        { name: 'Hugging Face', icon: <SiHuggingface className="text-3xl" />, level: 85 },
-        { name: 'LangChain', icon: <GiHummingbird className="text-3xl" />, level: 90 },
-        { name: 'Prompt Engineering', icon: <SiOpenai className="text-3xl" />, level: 95 },
-      ]
-    },
-    {
-      title: 'MLOps & Tools',
-      skills: [
-        { name: 'Python', icon: <FaPython className="text-3xl" />, level: 95 },
-        { name: 'Jupyter', icon: <SiJupyter className="text-3xl" />, level: 95 },
-        { name: 'Data Management', icon: <FaDatabase className="text-3xl" />, level: 90 },
-        { name: 'Cloud ML Services', icon: <FaCloud className="text-3xl" />, level: 85 },
+        { name: "Hugging Face", icon: <SiHuggingface className="text-2xl" />, level: 90 },
+        { name: "OpenAI", icon: <SiOpenai className="text-2xl" />, level: 95 },
+        { name: "NLTK & spaCy", icon: <FaDatabase className="text-2xl" />, level: 88 },
+        { name: "LLaMA", icon: <SiOpenai className="text-2xl" />, level: 82 },
+        { name: "MLflow", icon: <SiMlflow className="text-2xl" />, level: 80 },
+        { name: "AWS Services", icon: <FaAws className="text-2xl" />, level: 85 },
       ]
     }
-  ];
-
-  // Tech stack icons grid
-  const techIcons = [
-    { name: 'PyTorch', icon: <SiPytorch className="text-4xl" /> },
-    { name: 'TensorFlow', icon: <SiTensorflow className="text-4xl" /> },
-    { name: 'OpenAI', icon: <SiOpenai className="text-4xl" /> },
-    { name: 'Hugging Face', icon: <SiHuggingface className="text-4xl" /> },
-    { name: 'Neural Networks', icon: <BiNetworkChart className="text-4xl" /> },
-    { name: 'Python', icon: <FaPython className="text-4xl" /> },
-    { name: 'LangChain', icon: <GiHummingbird className="text-4xl" /> },
-    { name: 'Scikit-Learn', icon: <SiScikitlearn className="text-4xl" /> },
-    { name: 'Jupyter', icon: <SiJupyter className="text-4xl" /> },
-    { name: 'Computer Vision', icon: <SiOpencv className="text-4xl" /> },
-    { name: 'Pandas', icon: <SiPandas className="text-4xl" /> },
-    { name: 'NumPy', icon: <SiNumpy className="text-4xl" /> },
   ];
 
   return (
@@ -86,66 +54,53 @@ export default function Skills() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-2">
-            <span className="text-gradient">My Skills</span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-2 text-white">
+            My Skills
           </h2>
-          <div className="w-16 h-1 bg-gradient-primary mx-auto rounded-full"></div>
+          <div className="w-16 h-1 bg-gradient-primary mx-auto rounded-full mb-6"></div>
+          <p className="text-gray-300 max-w-3xl mx-auto">
+            I have expertise in a wide range of technologies and tools, with a focus on artificial intelligence, 
+            machine learning, and natural language processing.
+          </p>
         </motion.div>
         
-        {/* Tech icons grid */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 mb-16"
-        >
-          {techIcons.map((tech, index) => (
+        <div className="space-y-12">
+          {skillCategories.map((category, categoryIndex) => (
             <motion.div 
-              key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: 0.1 * index }}
-              whileHover={{ scale: 1.1, color: "#8B5CF6" }}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 flex flex-col items-center justify-center text-gray-300 hover:text-primary transition-colors"
-            >
-              {tech.icon}
-              <span className="mt-2 text-sm">{tech.name}</span>
-            </motion.div>
-          ))}
-        </motion.div>
-        
-        {/* Skill categories */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {skillCategories.map((category, catIndex) => (
-            <motion.div 
-              key={catIndex}
+              key={category.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 + (catIndex * 0.1) }}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6"
+              transition={{ duration: 0.6, delay: 0.2 + (categoryIndex * 0.1) }}
             >
-              <h3 className="text-xl font-semibold mb-6 text-primary">{category.title}</h3>
-              <div className="space-y-6">
-                {category.skills.map((skill, index) => (
-                  <div key={index}>
-                    <div className="flex items-center mb-2">
-                      <div className="mr-3 text-primary">{skill.icon}</div>
-                      <span className="text-white">{skill.name}</span>
-                      <span className="ml-auto text-sm text-gray-400">{skill.level}%</span>
+              <h3 className="text-2xl font-bold mb-6 text-white">{category.name}</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {category.skills.map((skill, skillIndex) => (
+                  <motion.div 
+                    key={skill.name}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: 0.1 + (skillIndex * 0.05) }}
+                    className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6"
+                  >
+                    <div className="flex items-center mb-3">
+                      <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center mr-3">
+                        {skill.icon}
+                      </div>
+                      <h4 className="text-lg font-semibold text-white">{skill.name}</h4>
                     </div>
                     <div className="w-full bg-white/10 rounded-full h-2">
                       <motion.div 
+                        className="bg-gradient-primary rounded-full h-2"
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.4 + (index * 0.1) }}
-                        className="bg-gradient-primary h-2 rounded-full"
+                        transition={{ duration: 1, delay: 0.2 + (skillIndex * 0.05) }}
                       ></motion.div>
                     </div>
-                  </div>
+                    <div className="mt-2 text-right text-sm text-gray-400">{skill.level}%</div>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>

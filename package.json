@@ -1,7 +1,7 @@
 {
-  "name": "hassan_portfolio",
+  "name": "sam_portfolio",
   "version": "1.0.0",
-  "description": "Hassan's Portfolio Website",
+  "description": "Sam's Portfolio Website",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,7 +11,7 @@
     "export": "next build && next export"
   },
   "keywords": [],
-  "author": "Hassan",
+  "author": "Sam Abbott",
   "license": "ISC",
   "dependencies": {
     "@types/node": "latest",

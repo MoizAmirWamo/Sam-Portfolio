@@ -8,7 +8,7 @@ export default function Hero() {
     <section id="home" className="h-screen flex flex-col justify-center relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-[#0f172a] to-[#1e293b] z-[-1]"></div>
       
-      {/* Purple circles in background */}
+      {/* Blue circles in background */}
       <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/20 rounded-full filter blur-3xl"></div>
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/20 rounded-full filter blur-3xl"></div>
       
@@ -20,11 +20,11 @@ export default function Hero() {
           className="text-center"
         >
           <h2 className="text-xl md:text-2xl font-medium mb-2 text-gray-300">Hello, I'm</h2>
-          <h1 className="text-5xl md:text-7xl font-bold mb-4">M. <span className="text-gradient">Hassan</span></h1>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">AI/ML Engineer</h2>
+          <h1 className="text-5xl md:text-7xl font-bold mb-4 text-white">Sam Abbott</h1>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">AI Engineer</h2>
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-            Expert AI/ML Engineer with 7+ years of experience building scalable ML pipelines 
-            and AI-driven solutions across pharmaceutical, finance, and insurance sectors.
+            Experienced AI Engineer with 6+ years of expertise in deep learning, 
+            neural networks, and Generative AI, specializing in NLP and LLMs.
           </p>
           
           <div className="flex justify-center space-x-4">

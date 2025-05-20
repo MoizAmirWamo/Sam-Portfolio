@@ -47,7 +47,7 @@ export default function Navbar() {
           transition={{ duration: 0.5 }}
           className="text-2xl font-bold"
         >
-          <span className="text-gradient">Hassan</span>
+          <span className="text-gradient">Portfolio</span>
         </motion.a>
         
         {/* Desktop Navigation */}

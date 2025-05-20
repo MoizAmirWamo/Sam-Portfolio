@@ -45,7 +45,7 @@ export default function Projects() {
       category: 'ai',
       image: '/projects/burstmodeai.jpg',
       techStack: ['Next.js', 'Gemini', 'Firebase', 'GCP', 'Stripe'],
-      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Burst-Mode-AI-b6VyznwwurW2Vi4WdCXxOTCaA6fSoQ.MP4'
+      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Burst-Mode-AI-b6VyznwwurW2Vi4WdCXxOTCaA6fSoQ.mp4'
     },
     {
       id: 3,
@@ -54,7 +54,7 @@ export default function Projects() {
       category: 'data',
       image: '/projects/chronos.jpg',
       techStack: ['Streamlit', 'Python', 'Chronos-T5', 'Random Forest', 'ARIMA'],
-      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Time-Series-App-n5omDc4FqWHGPVg9zKkkjkjDg7lQaL.mov'
+      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Time-Series-App-n5omDc4FqWHGPVg9zKkkjkjDg7lQaL.mp4'
     },
     {
       id: 4,
@@ -63,7 +63,7 @@ export default function Projects() {
       category: 'nlp',
       image: '/projects/relaxerai.jpg',
       techStack: ['Next.js', 'FastAPI', 'LangChain', 'OpenAI', 'ChromaDB'],
-      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/RelaxerAI-Uy287Bhv5MvXWE2ES3tWu0wzksGvvb.mov'
+      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/RelaxerAI-Uy287Bhv5MvXWE2ES3tWu0wzksGvvb.mp4'
     },
     {
       id: 5,
@@ -72,7 +72,7 @@ export default function Projects() {
       category: 'nlp',
       image: '/projects/langchain-rag.jpg',
       techStack: ['LangChain', 'Llama3', 'DeepSeek', 'FAISS', 'FastEmbed'],
-      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Langchain_RAG-XfFu1JZNNBPvymatWeKpTJhTBUIMGG.mov'
+      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Langchain_RAG-XfFu1JZNNBPvymatWeKpTJhTBUIMGG.mp4'
     },
     {
       id: 6,
@@ -81,7 +81,7 @@ export default function Projects() {
       category: 'data',
       image: '/projects/movie-advisor.jpg',
       techStack: ['Streamlit', 'Python', 'TF-IDF', 'Cosine Similarity', 'TMDb API'],
-      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Movie-Rcommender-qBk4gJMBykvfpLYo2gSKb2RyEA5MXt.mov'
+      demoVideo: 'https://a2mi7w7p0id50htw.public.blob.vercel-storage.com/Movie-Rcommender-qBk4gJMBykvfpLYo2gSKb2RyEA5MXt.mp4'
     },
   ];
 
@@ -270,33 +270,43 @@ export default function Projects() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                   </svg>
                   <p className="text-center px-4">{videoError}</p>
-                  <button 
-                    onClick={closeModal}
-                    className="mt-4 bg-white/20 px-4 py-2 rounded hover:bg-white/30 transition-colors"
-                  >
-                    Close
-                  </button>
+                  <div className="flex flex-col gap-2 mt-4">
+                    <a
+                      href={activeVideo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-primary px-4 py-2 rounded hover:bg-primary/80 transition-colors"
+                    >
+                      Open Video in New Tab
+                    </a>
+                    <button 
+                      onClick={closeModal}
+                      className="bg-white/20 px-4 py-2 rounded hover:bg-white/30 transition-colors"
+                    >
+                      Close
+                    </button>
+                  </div>
                 </div>
               ) : (
-                <video 
-                  key={activeVideo}
-                  controls 
-                  playsInline
-                  autoPlay
-                  crossOrigin="anonymous"
-                  controlsList="nodownload"
-                  className="w-full h-full object-contain"
-                  onLoadedData={handleVideoLoad}
-                  onError={(e) => {
-                    console.error('Video loading error:', e);
-                    setIsLoading(false);
-                    setVideoError(`Sorry, there was an error loading the video (${activeVideo}). Please try again later.`);
-                  }}
-                >
-                  <source src={activeVideo} type="video/mp4" />
-                  <source src={activeVideo} type="video/quicktime" />
-                  Your browser does not support the video tag.
-                </video>
+                <>
+                  <video 
+                    key={activeVideo}
+                    controls 
+                    playsInline
+                    autoPlay
+                    preload="auto"
+                    className="w-full h-full object-contain"
+                    onLoadedData={handleVideoLoad}
+                    onError={(e) => {
+                      console.error('Video loading error:', e);
+                      setIsLoading(false);
+                      setVideoError(`Sorry, there was an error loading the video. Please try opening it directly in a new tab.`);
+                    }}
+                  >
+                    <source src={activeVideo} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </>
               )}
             </div>
           </div>

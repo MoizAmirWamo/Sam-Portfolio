@@ -77,6 +77,25 @@ export default function Projects() {
     document.body.style.overflow = 'hidden';
   };
 
+  // Helper function to determine video type
+  const getVideoType = (url: string) => {
+    if (url.toLowerCase().endsWith('.mp4')) return 'video/mp4';
+    if (url.toLowerCase().endsWith('.mov') || url.toLowerCase().includes('.mov?')) return 'video/quicktime';
+    if (url.toLowerCase().endsWith('.webm')) return 'video/webm';
+    return 'video/mp4'; // default fallback
+  };
+
+  // Helper function to get video title
+  const getVideoTitle = (url: string) => {
+    if (url.includes('GovProposalPro')) return 'GovProposalPro Demo';
+    if (url.includes('Burst-Mode-AI')) return 'BurstModeAI Demo';
+    if (url.includes('Time-Series-App')) return 'Chronos Time Series Demo';
+    if (url.includes('RelaxerAI')) return 'RelaxerAI Demo';
+    if (url.includes('Langchain_RAG')) return 'LangChain-Based RAG Demo';
+    if (url.includes('Movie-Rcommender')) return 'Movie Advisor Demo';
+    return 'Project Demo';
+  };
+
   const filters = [
     { value: 'all', label: 'All' },
     { value: 'ai', label: 'AI/ML' },
@@ -195,12 +214,7 @@ export default function Projects() {
           <div className="relative w-full max-w-4xl bg-[#0f172a]/90 rounded-xl overflow-hidden border border-white/10 shadow-2xl">
             <div className="bg-gradient-to-r from-primary/20 to-secondary/20 py-3 px-4 flex justify-between items-center">
               <h3 className="text-white font-medium">
-                {activeVideo.includes('GovProposalPro') && 'GovProposalPro Demo'}
-                {activeVideo.includes('Burst-Mode-AI') && 'BurstModeAI Demo'}
-                {activeVideo.includes('Time-Series-App') && 'Chronos Time Series Demo'}
-                {activeVideo.includes('RelaxerAI') && 'RelaxerAI Demo'}
-                {activeVideo.includes('Langchain_RAG') && 'LangChain-Based RAG Demo'}
-                {activeVideo.includes('Movie-Rcommender') && 'Movie Advisor Demo'}
+                {getVideoTitle(activeVideo)}
               </h3>
               <button 
                 onClick={closeModal}
@@ -213,19 +227,18 @@ export default function Projects() {
             </div>
             <div className="aspect-video bg-black relative">
               <video 
-                src={activeVideo} 
+                className="w-full h-full object-contain"
                 controls 
                 playsInline
                 autoPlay
                 controlsList="nodownload"
-                className="w-full h-full object-contain"
                 onError={(e) => {
                   console.error('Video loading error:', e);
                   alert('Sorry, there was an error loading the video. Please try again later.');
                   closeModal();
                 }}
               >
-                <source src={activeVideo} type={activeVideo.toLowerCase().endsWith('.mp4') ? 'video/mp4' : 'video/quicktime'} />
+                <source src={activeVideo} type={getVideoType(activeVideo)} />
                 Your browser does not support the video tag.
               </video>
             </div>
